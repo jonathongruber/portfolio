@@ -1,0 +1,17 @@
+import numpy as np
+import pandas as pd
+df_can = pd.read_csv('https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-DV0101EN-SkillsNetwork/Data%20Files/Canada.csv')
+df_can.set_index('Country', inplace=True)
+years = list(map(str, range(1980, 2013)))
+df_CI = df_can.loc[['India', 'China'], years]
+df_CI = df_CI.transpose()
+
+%matplotlib inline 
+
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+
+plt.title('Immigration from India and China')
+plt.ylabel('Number of Immigrants')
+plt.xlabel('Years')
+df_CI.plot(kind='line')
